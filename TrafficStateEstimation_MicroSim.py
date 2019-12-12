@@ -19,7 +19,6 @@ import pandas as pd
 import sqlite3
 import csv
 from sqlite3 import Error
-import Parameter_estimation as pe
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -32,17 +31,17 @@ time_step = 6
 global link_length
 # link_length = 4200.5 ###  4649 feet
 link_length = 4649
-today_date = "12_2"
-penetration = "_60_percent"
+today_date = "12_12"
+penetration = "_15_percent"
 actual_state_address = "D://BSM//all_vehicle_9_15_2019//actual_traffic_state_9_15.csv"
 
 
 def main():
     penetration_rate = 0.6
-    address = "D://BSM//all_vehicle_9_15_2019//9_15_60_percent_vehicles.csv"
-    db_file = "D://BSM//all_vehicle_9_15_2019//BSM_12_2_60_percent.sqlite"
-    save_to = "D://BSM//all_vehicle_9_15_2019//Sim_uncongested" + penetration + "_" + today_date
-
+    address = "D://BSM//all_vehicle_9_15_2019//9_15"+penetration+"_vehicles.csv"
+    db_file = "D://BSM_CODE_TEST_12_12_2019//BSM_12_12_15_percent.sqlite"
+    #save_to = "D://BSM//all_vehicle_9_15_2019//Sim_uncongested" + penetration + "_" + today_date
+    save_to = "D://BSM_CODE_TEST_12_12_2019"
     global counter
     counter = 1
     global cell_length
@@ -317,16 +316,16 @@ def main():
 
                             # print("Time Step: ", i, " Cell: ", j+1, " Speed: ", KG_speed[i][j])
 
-                        fig = plt.figure(figsize=(10, 3.5), dpi=100)
-                        plt.plot(KF_occ[:, 2], linewidth=0.8)
-                        plt.plot(mea_occ[:, 2] * (1.0), linewidth=0.3)
-                        plt.plot(mea_occ_via_speed[:, 2], linewidth=0.3)
-                        plt.plot(pre_occ[:, 2], linewidth=0.3)
-                        plt.xlabel('time step')
-                        plt.ylabel('occupancy (veh)')
-                        plt.legend(
-                            ['Estimation', 'Measured Occ via Occ', 'Measured Occ via Speed', 'Predict Occ via CTM'])
-                        plt.show(fig)
+                        # fig = plt.figure(figsize=(10, 3.5), dpi=100)
+                        # plt.plot(KF_occ[:, 2], linewidth=0.8)
+                        # plt.plot(mea_occ[:, 2] * (1.0), linewidth=0.3)
+                        # plt.plot(mea_occ_via_speed[:, 2], linewidth=0.3)
+                        # plt.plot(pre_occ[:, 2], linewidth=0.3)
+                        # plt.xlabel('time step')
+                        # plt.ylabel('occupancy (veh)')
+                        # plt.legend(
+                        #     ['Estimation', 'Measured Occ via Occ', 'Measured Occ via Speed', 'Predict Occ via CTM'])
+                        # plt.show(fig)
             print("all row number: ", counter)
 
             ################################ finish adding new raw data in the database ################################
